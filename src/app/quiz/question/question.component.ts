@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { QuizService } from "../../shared/services/quiz.service";
+// src/app/quiz/question/question.component.ts
+import { Component, Input, OnInit } from '@angular/core';
+import { QuizService } from '../../shared/services/quiz.service';
 
 @Component({
   selector: 'app-question',
@@ -8,10 +9,11 @@ import { QuizService } from "../../shared/services/quiz.service";
 })
 export class QuestionComponent implements OnInit {
   quizContent: any[] = this.quizService.quizContent;
+  @Input() categoryId = 0;
 
-  constructor(private quizService: QuizService) { }
+  constructor(private quizService: QuizService) {}
 
   ngOnInit(): void {
-    this.quizService.getQuizContent();
+    this.quizService.getQuizContent(this.categoryId);
   }
 }

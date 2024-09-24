@@ -1,17 +1,19 @@
+// src/app/shared/services/quiz.service.ts
 import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class QuizService {
   quizContent: any[] = [];
-  playerAnswers: {questionId: number; answer: string}[] = [];
+  categorySelected = 0;
+  playerAnswers: { questionId: number; answer: string }[] = [];
   score = 0;
   isQuizFinished = false;
   playerName: string = '';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   checkAnswers() {
     this.score = 0;
@@ -35,17 +37,21 @@ export class QuizService {
       isAnswered.answer = answer;
       return;
     }
-    this.playerAnswers.push({questionId, answer});
+    this.playerAnswers.push({ questionId, answer });
   }
 
-  getQuizContent() {
+  getQuizContent(categoryId = 0) {
+    categoryId = Number(categoryId);
+    this.categorySelected = categoryId;
     this.http.get('http://localhost:3000/questions').subscribe((questions: any) => {
       for (const question of questions) {
+        if (categoryId && question.categoryId !== categoryId) continue;
+
         this.http.get(`http://localhost:3000/answers?questionId=${question.id}`).subscribe((answers: any) => {
           this.quizContent.push({
-              id: question.id,
-              question: question.questionLabel,
-              answers
+            id: question.id,
+            question: question.questionLabel,
+            answers
           });
         });
       }
