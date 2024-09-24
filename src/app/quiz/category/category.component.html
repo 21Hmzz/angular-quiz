@@ -1,0 +1,27 @@
+<div class="w-full ">
+  <div class="search w-full flex justify-center items-center">
+    <input type="text" class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
+           placeholder="Rechercher une catégorie" [(ngModel)]="searchText"/>
+    <button class="rounded-md bg-slate-800 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none ml-2" (click)="searchText = ''">
+      X
+    </button>
+  </div>
+  <div class="w-full text-center">
+    <h3
+      class="font-bold text-2xl  py-8">
+      Bonjour <span
+        class="text-indigo-500 font-bold underline"
+    >{{ playerName }}</span>, choisissez une catégorie
+    </h3>
+    <div class="grid grid-cols-3 gap-4 w-full">
+      <div *ngFor="let category of categories | filterCategories: searchText"
+           class="bg-indigo-500 text-white p-4 rounded-md mt-2 cursor-pointer hover:bg-indigo-600 border border-indigo-600 transition duration-300 ease shadow-md"
+           [routerLink]="['/quiz', category.id,playerName]">
+        <img [src]="category.categoryImage" [alt]="category.categoryName" class="w-full h-48 object-cover rounded-md"/>
+        <h4 class="text-center">
+          {{ category.categoryName }}
+        </h4>
+      </div>
+    </div>
+  </div>
+</div>

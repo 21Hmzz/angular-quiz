@@ -2,19 +2,23 @@
   "categories": [
     {
       "id": 1,
-      "categoryName": "Sport"
+      "categoryName": "Sport",
+      "categoryImage": "https://t3.ftcdn.net/jpg/05/13/76/12/360_F_513761212_i3z6vHUNV0bQ8pjkBGO3yrpLg8zs4mFK.jpg"
     },
     {
       "id": 2,
-      "categoryName": "Politique"
+      "categoryName": "Politique",
+      "categoryImage": "https://ledrenche.fr/wp-content/uploads/marco-oriolesi-wqLGlhjr6Og-unsplash-1030x438.jpg"
     },
     {
       "id": 3,
-      "categoryName": "Histoire"
+      "categoryName": "Histoire",
+      "categoryImage": "https://www.radiofrance.fr/s3/cruiser-production/2021/04/e770ac6d-06b8-4731-8c44-1c24ec43e42f/1200x680_esclavage_1.jpg"
     },
     {
       "id": 4,
-      "categoryName": "Géographie"
+      "categoryName": "Géographie",
+      "categoryImage": "https://www.lemondedesados.fr/wp-content/uploads/2020/04/unnamed.png"
     }
   ],
   "questions": [
@@ -914,7 +918,8 @@
       "questionId": 35,
       "answerLabel": "Désert de Gobi",
       "isCorrect": false
-    }, {
+    },
+    {
       "questionId": 35,
       "answerLabel": "Désert de Mongolie",
       "isCorrect": false
@@ -1035,6 +1040,11 @@
       "username": "test",
       "password": "test",
       "id": 3
+    },
+    {
+      "id": "ca25",
+      "username": "Hamza",
+      "password": "Bella"
     }
   ]
 }
